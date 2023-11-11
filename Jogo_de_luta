@@ -1,0 +1,922 @@
+
+
+
+//Prototipo de jogo de luta
+//grupo: Amyr, Matheus Martins, Gustavo, luis, Thiago leonardo.
+// O Prototipo é sobre um jogo de luta onde você deve lutar contra uma IA.
+// As vezes você pode defender dos golpes e o robo tambem pode.
+// Tudo aleatorio e foi na linguagem C.
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+
+int main (){
+    
+     srand(time(NULL));
+    //atributos
+    int vida = 15;
+    int atq = 3;
+    int chute = 6;
+    int vitoria = 0;
+    //atributos ADV
+    int VidaAdv = 15;
+    int atqini = 4;
+    int chuteini = 7;
+    int vitoriainimg = 0;
+    //siuação
+    char situ1, situ2, situ3;
+    int rounds = 1;
+    printf ("  Você foi desafiado a lutar em até no máximo 3 rounds\n");
+    sleep(1);
+    printf ("  Você lutará contra um oponente digno!\n");
+    sleep (1);
+    printf ("  boa sorte!\n");
+    sleep (1);
+    printf ("           Round 1\n");
+    sleep (1);
+    printf ("           lutem!");
+    sleep (1);
+    
+    while (&vida &&VidaAdv){
+    printf ("\n\n");
+    printf("      000         111         \n");
+    printf("     0   0       1   1     \n");
+    printf("     0   0       1   1      \n");
+    printf("       0   0       1         \n");
+    printf("       000       1 1 1     \n");
+    printf("    0  0       1   1     \n");
+    printf("       0           1        \n");
+    printf("     0   0       1   1   \n");
+    printf("    0     0     1    1       \n ");
+    printf("-------------------------------------------\n");
+    
+    sleep (1);
+    printf ("Seu Turno!\n");
+    printf (" vida (%d)\n", vida);
+    printf (" (A) para dar um soco direto\n (B) Para dar um chute\n");        
+    scanf (" %c", &situ1);
+    switch (situ1){
+        case 'A':
+        case 'a':
+        int defesaRAND = rand() %100;
+        if (defesaRAND < 70)
+        {
+        printf ("\n\n"); 
+           printf("       000      111         \n");
+           printf("      0   0    1   1     \n");
+           printf("      0   0  0 1   1      \n");
+           printf("        0  0     1         \n");
+           printf("        00     1 1 1     \n");
+           printf("     0  0    1   1   1     \n");
+           printf("        0       1        \n");
+           printf("       0 0    1  1   \n");
+           printf("      0   0  1   1       \n ");
+           printf("-------------------------------------------\n");
+           printf("-%d de dano\n", atq);
+    VidaAdv = VidaAdv - atq;
+    sleep (2);
+    break;
+        } else {
+            printf ("\n\n"); 
+           printf("       000      111         \n");
+           printf("      0   0    1   1     \n");
+           printf("      0   0  1 1   1      \n");
+           printf("        0  0 1   1         \n");
+           printf("        00     1 1 1     \n");
+           printf("        0        1   1     \n");
+           printf("        0        1        \n");
+           printf("       0 0      1 1   \n");
+           printf("      0   0   1   1       \n ");
+           printf("-------------------------------------------\n");
+           printf ("Ele denfendeu!");
+           sleep (2);
+           break;
+   
+            
+        }
+    
+    case 'B':
+    case 'b':
+    int chute_defesa = rand() % 100;
+    if (chute_defesa > 45){
+    printf ("\n\n"); 
+    printf("      000       111         \n");
+    printf("     0   0     1   1     \n");
+    printf("     0   0   0 1   1      \n");
+    printf("       0    0   1         \n");
+    printf("      0 00 0    1 1 1     \n");
+    printf("     0   0    1 1        \n");
+    printf("        0      1        \n");
+    printf("       0      1 1   \n");
+    printf("      0     1   1       \n ");
+    printf("-------------------------------------------\n");
+    printf("(-%d) de dano\n", chute);
+    VidaAdv = VidaAdv - chute;
+    sleep (2);
+    break;
+    } else{
+        printf ("\n\n"); 
+    printf("      000         111         \n");
+    printf("     0   0       1   1     \n");
+    printf("     0   0   01  1   1      \n");
+    printf("       0    0  1   1         \n");
+    printf("      0 00 0    1  1 1     \n");
+    printf("     0   0         1   1    \n");
+    printf("        0          1        \n");
+    printf("       0          1 1   \n");
+    printf("      0          1   1       \n ");
+    printf("-------------------------------------------\n");
+    printf ("Ele defendeu o chute!\n");
+
+    }
+    
+    }
+    
+    
+    
+      //checagem de vida
+        if (vida <= 0){
+            printf ("adversario ganhou o primeiro round!");
+             printf ("\n\n");
+    printf("                    111         \n");
+    printf("                   1   1     \n");
+    printf("                   1   1       \n");
+    printf("                 1   1          \n");
+    printf("                   1 1 1     \n");
+    printf("                     1  1   \n");
+    printf("                     1        \n");
+    printf("                   1   1   \n");
+    printf("                   1   1      \n ");
+    printf("-------------------------------------------\n");
+    vitoriainimg++;
+    sleep (3);
+    break;
+    
+            
+            
+            
+        }else if (VidaAdv <= 0){
+           printf ("Você venceu o primeiro round!\n");
+           printf ("\n\n");
+    printf("            000         \n");
+    printf("           0   0     \n");
+    printf("           0   0       \n");
+    printf("         0   0   0       \n");
+    printf("           0 0 0     \n");
+    printf("             0     \n");
+    printf("             0        \n");
+    printf("           0   0   \n");
+    printf("           0   0      \n ");
+    printf("-------------------------------------------\n");
+    vitoria++;
+    sleep (3);
+    break;
+        }
+    
+ 
+    
+    //IA decidindo
+    sleep (1);
+    printf ("\nTurno do inimigo!\n");
+    printf ("vida do adversario (%d)", VidaAdv);
+    int ataques = rand() % 2;
+    if (ataques == 0){
+        int defesaRANDP1 = rand() %100;
+        if (defesaRANDP1 < 70){
+        printf ("\n\n"); 
+          printf("      000      111         \n");
+          printf("     0   0    1   1     \n");
+          printf("     0   0    1   1      \n");
+          printf("       0   1    1         \n");
+          printf("      00 0    1  1 1     \n");
+          printf("    0  0  0     1   1     \n");
+          printf("        0       1        \n");
+          printf("       0  0    1  1   \n");
+          printf("       0   0  1    1       \n ");
+          printf("-------------------------------------------\n");
+          printf("-%d de dano\n", atqini);
+    vida = vida - atqini;
+    sleep (2);
+        }else {
+            printf ("\n\n"); 
+          printf("       000      111         \n");
+          printf("      0   0    1   1     \n");
+          printf("      0   0 0  1   1      \n");
+          printf("        0  0 1   1         \n");
+          printf("        00     1 1 1     \n");
+          printf("        0        1   1     \n");
+          printf("        0        1        \n");
+          printf("       0 0      1 1   \n");
+          printf("      0   0   1    1       \n ");
+          printf("-------------------------------------------\n");
+          printf("Você denfendeu!\n");
+          sleep (2);
+        }
+    
+    }else if (ataques == 1){
+        int defesaRANDperna = rand () % 100;
+        if (defesaRANDperna > 70){
+        printf ("\n\n"); 
+    printf("       000     111         \n");
+    printf("      0   0   1   1     \n");
+    printf("      0   0   1   1      \n");
+    printf("        0       1         \n");
+    printf("      000       1 1     \n");
+    printf("   0   0  1     1   1     \n");
+    printf("       0     1  1        \n");
+    printf("      0 0       1   \n");
+    printf("      0   0       1       \n ");
+    printf("-------------------------------------------\n");
+    printf("-%d de dano\n", chuteini);
+    vida = vida - chuteini;
+    sleep (1);
+        } else {
+            printf ("\n\n"); 
+    printf("      000            111         \n");
+    printf("     0   0          1   1     \n");
+    printf("     0   0  0    1  1   1      \n");
+    printf("       0  0  1    1   1         \n");
+    printf("      000      1    1  1     \n");
+    printf("   0   0         1 1     1   \n");
+    printf("       00          1          \n");
+    printf("      0   0         1         \n");
+    printf("     0     0         1         \n ");
+    printf("-------------------------------------------\n");
+    printf ("Você defendeu!\n");
+    sleep (2);
+            
+    
+            
+        }
+        
+        
+        
+        
+        
+        
+    }else if (ataques == 2){
+        printf ("\n\n");
+    printf("      000         111         \n");
+    printf("     0   0       1   1     \n");
+    printf("     0   0    1  1   1      \n");
+    printf("   0   0       1   1         \n");
+    printf("     0 00        1 1     \n");
+    printf("       0  0        1     \n");
+    printf("       0        1  1        \n");
+    printf("      0 0       1   1   \n");
+    printf("     0   0          1       \n ");
+    printf("-------------------------------------------\n");
+    sleep(1);
+    }
+        
+        
+        //checagem de vida
+        if (vida <= 0){
+            printf ("adversario ganhou o primeiro round!");
+             printf ("\n\n");
+    printf("                    111         \n");
+    printf("                   1   1     \n");
+    printf("                   1   1       \n");
+    printf("                 1   1          \n");
+    printf("                   1 1 1     \n");
+    printf("                     1  1   \n");
+    printf("                     1        \n");
+    printf("                   1   1   \n");
+    printf("                   1   1      \n ");
+    printf("-------------------------------------------\n");
+    vitoriainimg = vitoriainimg + 1;
+    sleep (3);
+    break;
+    
+            
+            
+            
+        }else if (VidaAdv <= 0){
+            ("Você venceu o primeiro round!\n");
+            printf ("\n\n");
+    printf("            000         \n");
+    printf("           0   0     \n");
+    printf("           0   0       \n");
+    printf("         0   0   0       \n");
+    printf("           0 0 0     \n");
+    printf("             0     \n");
+    printf("             0        \n");
+    printf("           0   0   \n");
+    printf("           0   0      \n ");
+    printf("-------------------------------------------\n");
+    vitoria = vitoria + 1;
+    sleep (3);
+    break;
+        }
+        
+        
+        
+        
+        
+        
+    }
+    
+        vida = 15;
+        VidaAdv = 15;
+
+    printf ("                        Round 2\n");
+    sleep (2);
+    printf ("                       Lutem!\n");
+    printf("-----------------------------------");
+    
+    while (&VidaAdv &&vida){
+        printf ("\n\n");
+    printf("      000          111         \n");
+    printf("     0   0        1   1     \n");
+    printf("     0   0        1   1      \n");
+    printf("       0            1         \n");
+    printf("      000         1 1  1     \n");
+    printf("    0  0   0     1  1     \n");
+    printf("       0            1        \n");
+    printf("      0  0        1   1   \n");
+    printf("     0    0      1    1       \n ");
+    printf("-------------------------------------------\n");
+    
+    sleep (1);
+    printf ("Seu Turno!\n");
+    printf (" vida (%d)\n", vida);
+    printf (" (A) para dar um soco direto\n (B) Para dar um chute\n");        
+    scanf (" %c", &situ1);
+    switch (situ1){
+        case 'A':
+        case 'a':
+        int defesaRAND = rand() %100;
+        if (defesaRAND < 70)
+        {
+        printf ("\n\n"); 
+           printf("       000      111         \n");
+           printf("      0   0    1   1     \n");
+           printf("      0   0    1   1      \n");
+           printf("        0    1   1         \n");
+           printf("        00 0 0  1 1      \n");
+           printf("     0  0       1   1     \n");
+           printf("        0       1        \n");
+           printf("       0 0    1  1   \n");
+           printf("      0   0  1   1       \n ");
+           printf("-------------------------------------------\n");
+           printf("-%d de dano\n", atq);
+    VidaAdv = VidaAdv - atq;
+    sleep (2);
+    break;
+        } else {
+            printf ("\n\n"); 
+           printf("       000      111         \n");
+           printf("      0   0    1   1     \n");
+           printf("      0   0  1 1   1      \n");
+           printf("        0  0 1   1         \n");
+           printf("        00     1 1 1     \n");
+           printf("        0        1   1     \n");
+           printf("        0        1        \n");
+           printf("       0 0      1 1   \n");
+           printf("      0   0   1   1       \n ");
+           printf("-------------------------------------------\n");
+           printf ("Ele denfendeu!");
+           sleep (2);
+           break;
+   
+            
+        }
+    
+    case 'B':
+    case 'b':
+    int chute_defesa = rand() % 100;
+    if (chute_defesa > 45){
+    printf ("\n\n"); 
+    printf("      000       111         \n");
+    printf("     0   0     1   1     \n");
+    printf("     0   0   0 1   1      \n");
+    printf("       0    0   1         \n");
+    printf("      0 00 0    1 1 1     \n");
+    printf("     0   0    1 1        \n");
+    printf("        0      1        \n");
+    printf("       0      1 1   \n");
+    printf("      0     1   1       \n ");
+    printf("-------------------------------------------\n");
+    printf("(-%d) de dano\n", chute);
+    VidaAdv = VidaAdv - chute;
+    sleep (2);
+    break;
+    } else{
+        printf ("\n\n"); 
+    printf("      000         111         \n");
+    printf("     0   0       1   1     \n");
+    printf("     0   0   01  1   1      \n");
+    printf("       0    0  1   1         \n");
+    printf("      0 00 0    1  1 1     \n");
+    printf("     0   0         1   1    \n");
+    printf("        0          1        \n");
+    printf("       0          1 1   \n");
+    printf("      0          1   1       \n ");
+    printf("-------------------------------------------\n");
+    printf ("Ele defendeu o chute!\n");
+
+    }
+  
+    }
+    
+    
+    
+      //checagem de vida
+        if (vida <= 0){
+            printf ("adversario ganhou o segundo round!");
+             printf ("\n\n");
+    printf("                    111         \n");
+    printf("                   1   1     \n");
+    printf("                   1   1       \n");
+    printf("                 1   1          \n");
+    printf("                   1 1 1     \n");
+    printf("                     1  1   \n");
+    printf("                     1        \n");
+    printf("                   1   1   \n");
+    printf("                   1   1      \n ");
+    printf("-------------------------------------------\n");
+    vitoriainimg++;
+    sleep (3);
+    break;
+    
+            
+            
+            
+        }else if (VidaAdv <= 0){
+           printf ("Você venceu o segundo round!\n");
+           printf ("\n\n");
+    printf("            000         \n");
+    printf("           0   0     \n");
+    printf("           0   0       \n");
+    printf("         0   0   0       \n");
+    printf("           0 0 0     \n");
+    printf("             0     \n");
+    printf("             0        \n");
+    printf("           0   0   \n");
+    printf("           0   0      \n ");
+    printf("-------------------------------------------\n");
+    vitoria++;
+    sleep (3);
+    break;
+        }
+    
+ 
+    
+    //IA decidindo
+    sleep (1);
+    printf ("\nTurno do inimigo!\n");
+    printf ("vida do adversario (%d)", VidaAdv);
+    int ataques = rand() % 1;
+    printf ("%d\n", ataques);
+    if (ataques == 0){
+        int defesaRANDP1 = rand() %100;
+        if (defesaRANDP1 < 70){
+        printf ("\n\n"); 
+          printf("      000      111         \n");
+          printf("     0   0    1   1     \n");
+          printf("     0   0    1   1      \n");
+          printf("       0   1    1         \n");
+          printf("      00 0    1  1 1     \n");
+          printf("    0  0  0     1   1     \n");
+          printf("        0       1        \n");
+          printf("       0  0    1  1   \n");
+          printf("       0   0  1    1       \n ");
+          printf("-------------------------------------------\n");
+          printf("-%d de dano\n", atqini);
+    vida = vida - atqini;
+    sleep (2);
+        }else {
+            printf ("\n\n"); 
+          printf("       000      111         \n");
+          printf("      0   0    1   1     \n");
+          printf("      0   0 0  1   1      \n");
+          printf("        0  0 1   1         \n");
+          printf("        00     1 1 1     \n");
+          printf("        0        1   1     \n");
+          printf("        0        1        \n");
+          printf("       0 0      1 1   \n");
+          printf("      0   0   1    1       \n ");
+          printf("-------------------------------------------\n");
+          printf("Você denfendeu!\n");
+          sleep (2);
+        }
+    
+    }else if (ataques == 1){
+        int defesaRANDperna = rand () % 100;
+        if (defesaRANDperna > 70){
+        printf ("\n\n"); 
+    printf("       000     111         \n");
+    printf("      0   0   1   1     \n");
+    printf("      0   0   1   1      \n");
+    printf("        0       1         \n");
+    printf("      000       1 1     \n");
+    printf("   0   0  1     1   1     \n");
+    printf("       0     1  1        \n");
+    printf("      0 0       1   \n");
+    printf("      0   0       1       \n ");
+    printf("-------------------------------------------\n");
+    printf("-%d de dano\n", chuteini);
+    vida = vida - chuteini;
+    sleep (1);
+        } else {
+            printf ("\n\n"); 
+    printf("      000            111         \n");
+    printf("     0   0          1   1     \n");
+    printf("     0   0  0    1  1   1      \n");
+    printf("       0  0  1    1   1         \n");
+    printf("      000      1    1  1     \n");
+    printf("   0   0         1 1     1   \n");
+    printf("       00          1          \n");
+    printf("      0   0         1         \n");
+    printf("     0     0         1         \n ");
+    printf("-------------------------------------------\n");
+    printf ("Você defendeu!\n");
+    sleep (2);
+            
+    
+            
+        }
+        
+    }
+        
+        
+        //checagem de vida
+        if (vida <= 0){
+            printf ("adversario ganhou o segundo round!");
+             printf ("\n\n");
+    printf("                    111         \n");
+    printf("                   1   1     \n");
+    printf("                   1   1       \n");
+    printf("                 1   1          \n");
+    printf("                   1 1 1     \n");
+    printf("                     1  1   \n");
+    printf("                     1        \n");
+    printf("                   1   1   \n");
+    printf("                   1   1      \n ");
+    printf("-------------------------------------------\n");
+    vitoriainimg = vitoriainimg + 1;
+    sleep (3);
+    break;
+    
+            
+            
+            
+        }else if (VidaAdv <= 0){
+            ("Você venceu o segundo round!\n");
+            printf ("\n\n");
+    printf("            000         \n");
+    printf("           0   0     \n");
+    printf("           0   0       \n");
+    printf("         0   0   0       \n");
+    printf("           0 0 0     \n");
+    printf("             0     \n");
+    printf("             0        \n");
+    printf("           0   0   \n");
+    printf("           0   0      \n ");
+    printf("-------------------------------------------\n");
+    vitoria = vitoria + 1;
+    sleep (3);
+    break;
+        }
+        
+    
+        
+        
+    }
+    
+    // verificar se venceu 2 rouds consecutivos
+    sleep (1);
+if (vitoria >= 2){
+    printf ("Você venceu o combate!");
+    return 0;
+}else if (vitoriainimg >= 2){
+    printf ("Adversario vence o combate!");
+    return 0;
+    //------------------------------
+}
+
+
+
+
+
+// ROUND 3
+printf ("                Round final\n");
+sleep (1);
+printf ("                 Lutem!\n");
+printf ("-----------------------------------");
+vida = 15;
+VidaAdv = 15;
+while (&vida &&VidaAdv){
+        printf ("\n\n");
+    printf("      000          111         \n");
+    printf("     0   0        1   1     \n");
+    printf("     0   0        1   1      \n");
+    printf("       0            1         \n");
+    printf("      000         1 1  1     \n");
+    printf("    0  0   0     1  1     \n");
+    printf("       0            1        \n");
+    printf("      0  0        1   1   \n");
+    printf("     0    0      1    1       \n ");
+    printf("-------------------------------------------\n");
+    
+    sleep (1);
+    printf ("Seu Turno!\n");
+    printf (" vida (%d)\n", vida);
+    printf (" (A) para dar um soco direto\n (B) Para dar um chute\n");        
+    scanf (" %c", &situ1);
+    switch (situ1){
+        case 'A':
+        case 'a':
+        int defesaRAND = rand() %100;
+        if (defesaRAND < 70)
+        {
+        printf ("\n\n"); 
+           printf("       000      111         \n");
+           printf("      0   0    1   1     \n");
+           printf("      0   0    1   1      \n");
+           printf("        0    1   1         \n");
+           printf("        00 0 0  1 1      \n");
+           printf("     0  0       1   1     \n");
+           printf("        0       1        \n");
+           printf("       0 0    1  1   \n");
+           printf("      0   0  1   1       \n ");
+           printf("-------------------------------------------\n");
+           printf("-%d de dano\n", atq);
+    VidaAdv = VidaAdv - atq;
+    sleep (2);
+    break;
+        } else {
+            printf ("\n\n"); 
+           printf("       000      111         \n");
+           printf("      0   0    1   1     \n");
+           printf("      0   0  1 1   1      \n");
+           printf("        0  0 1   1         \n");
+           printf("        00     1 1 1     \n");
+           printf("        0        1   1     \n");
+           printf("        0        1        \n");
+           printf("       0 0      1 1   \n");
+           printf("      0   0   1   1       \n ");
+           printf("-------------------------------------------\n");
+           printf ("Ele denfendeu!");
+           sleep (2);
+           break;
+   
+            
+        }
+    
+    case 'B':
+    case 'b':
+    int chute_defesa = rand() % 100;
+    if (chute_defesa > 45){
+    printf ("\n\n"); 
+    printf("      000       111         \n");
+    printf("     0   0     1   1     \n");
+    printf("     0   0   0 1   1      \n");
+    printf("       0    0   1         \n");
+    printf("      0 00 0    1 1 1     \n");
+    printf("     0   0    1 1        \n");
+    printf("        0      1        \n");
+    printf("       0      1 1   \n");
+    printf("      0     1   1       \n ");
+    printf("-------------------------------------------\n");
+    printf("(-%d) de dano\n", chute);
+    VidaAdv = VidaAdv - chute;
+    sleep (2);
+    break;
+    } else{
+        printf ("\n\n"); 
+    printf("      000         111         \n");
+    printf("     0   0       1   1     \n");
+    printf("     0   0   01  1   1      \n");
+    printf("       0    0  1   1         \n");
+    printf("      0 00 0    1  1 1     \n");
+    printf("     0   0         1   1    \n");
+    printf("        0          1        \n");
+    printf("       0          1 1   \n");
+    printf("      0          1   1       \n ");
+    printf("-------------------------------------------\n");
+    printf ("Ele defendeu o chute!\n");
+
+    }
+    }
+    
+    
+    
+      //checagem de vida
+        if (vida <= 0){
+            printf ("adversario ganhou o ultimo round!");
+             printf ("\n\n");
+    printf("                    111         \n");
+    printf("                   1   1     \n");
+    printf("                   1   1       \n");
+    printf("                 1   1          \n");
+    printf("                   1 1 1     \n");
+    printf("                     1  1   \n");
+    printf("                     1        \n");
+    printf("                   1   1   \n");
+    printf("                   1   1      \n ");
+    printf("-------------------------------------------\n");
+    vitoriainimg++;
+    sleep (3);
+    break;
+    
+            
+            
+            
+        }else if (VidaAdv <= 0){
+           printf ("Você venceu o ultimo round!\n");
+           printf ("\n\n");
+    printf("            000         \n");
+    printf("           0   0     \n");
+    printf("           0   0       \n");
+    printf("         0   0   0       \n");
+    printf("           0 0 0     \n");
+    printf("             0     \n");
+    printf("             0        \n");
+    printf("           0   0   \n");
+    printf("           0   0      \n ");
+    printf("-------------------------------------------\n");
+    vitoria++;
+    sleep (3);
+    break;
+        }
+    
+ 
+    
+    //IA decidindo
+    sleep (1);
+    printf ("\nTurno do inimigo!\n");
+    printf ("vida do adversario (%d)", VidaAdv);
+    int ataques = rand() % 2;
+    printf ("%d\n", ataques);
+    if (ataques == 0){
+        int defesaRANDP1 = rand() %100;
+        if (defesaRANDP1 < 70){
+        printf ("\n\n"); 
+          printf("      000      111         \n");
+          printf("     0   0    1   1     \n");
+          printf("     0   0    1   1      \n");
+          printf("       0   1    1         \n");
+          printf("      00 0    1  1 1     \n");
+          printf("    0  0  0     1   1     \n");
+          printf("        0       1        \n");
+          printf("       0  0    1  1   \n");
+          printf("       0   0  1    1       \n ");
+          printf("-------------------------------------------\n");
+          printf("-%d de dano\n", atqini);
+    vida = vida - atqini;
+    sleep (2);
+        }else {
+            printf ("\n\n"); 
+          printf("       000      111         \n");
+          printf("      0   0    1   1     \n");
+          printf("      0   0 0  1   1      \n");
+          printf("        0  0 1   1         \n");
+          printf("        00     1 1 1     \n");
+          printf("        0        1   1     \n");
+          printf("        0        1        \n");
+          printf("       0 0      1 1   \n");
+          printf("      0   0   1    1       \n ");
+          printf("-------------------------------------------\n");
+          printf("Você denfendeu!\n");
+          sleep (2);
+        }
+    
+    }else if (ataques == 1){
+        int defesaRANDperna = rand () % 100;
+        if (defesaRANDperna > 70){
+        printf ("\n\n"); 
+    printf("       000     111         \n");
+    printf("      0   0   1   1     \n");
+    printf("      0   0   1   1      \n");
+    printf("        0       1         \n");
+    printf("      000       1 1     \n");
+    printf("   0   0  1     1   1     \n");
+    printf("       0     1  1        \n");
+    printf("      0 0       1   \n");
+    printf("      0   0       1       \n ");
+    printf("-------------------------------------------\n");
+    printf("-%d de dano\n", chuteini);
+    vida = vida - chuteini;
+    sleep (1);
+        } else {
+            printf ("\n\n"); 
+    printf("      000            111         \n");
+    printf("     0   0          1   1     \n");
+    printf("     0   0  0    1  1   1      \n");
+    printf("       0  0  1    1   1         \n");
+    printf("      000      1    1  1     \n");
+    printf("   0   0         1 1     1   \n");
+    printf("       00          1          \n");
+    printf("      0   0         1         \n");
+    printf("     0     0         1         \n ");
+    printf("-------------------------------------------\n");
+    printf ("Você defendeu!\n");
+    sleep (2);
+            
+    
+            
+        }
+        
+        
+        
+        
+        
+        
+    }else if (ataques == 2){
+        printf ("\n\n");
+    printf("      000         111         \n");
+    printf("     0   0       1   1     \n");
+    printf("     0   0    1  1   1      \n");
+    printf("   0   0       1   1         \n");
+    printf("     0 00        1 1     \n");
+    printf("       0  0        1     \n");
+    printf("       0        1  1        \n");
+    printf("      0 0       1   1   \n");
+    printf("     0   0          1       \n ");
+    printf("-------------------------------------------\n");
+    sleep(1);
+    }
+        
+        
+        //checagem de vida
+        if (vida <= 0){
+            printf ("adversario ganhou o ultimo round!");
+             printf ("\n\n");
+    printf("                    111         \n");
+    printf("                   1   1     \n");
+    printf("                   1   1       \n");
+    printf("                 1   1          \n");
+    printf("                   1 1 1     \n");
+    printf("                     1  1   \n");
+    printf("                     1        \n");
+    printf("                   1   1   \n");
+    printf("                   1   1      \n ");
+    printf("-------------------------------------------\n");
+    vitoriainimg = vitoriainimg + 1;
+    sleep (3);
+    break;
+    
+            
+            
+            
+        }else if (VidaAdv <= 0){
+            ("Você venceu o ultimo round!\n");
+            printf ("\n\n");
+    printf("            000         \n");
+    printf("           0   0     \n");
+    printf("           0   0       \n");
+    printf("         0   0   0       \n");
+    printf("           0 0 0     \n");
+    printf("             0     \n");
+    printf("             0        \n");
+    printf("           0   0   \n");
+    printf("           0   0      \n ");
+    printf("-------------------------------------------\n");
+    vitoria = vitoria + 1;
+    sleep (3);
+    break;
+        }
+        
+    
+        
+        
+    }
+    
+    sleep (1);
+if (vitoria >= 2){
+    printf ("Você venceu o combate!");
+    for (int i = 0; i < 4; i++){
+    
+    printf("            000         \n");
+    printf("           0   0     \n");
+    printf("           0   0       \n");
+    printf("         0   0   0       \n");
+    printf("           0 0 0     \n");
+    printf("             0      \n");
+    printf("             0        \n");
+    printf("           0   0   \n");
+    printf("           0   0      \n ");
+    printf("-------------------------------------------\n");
+        
+    }
+    }else if (vitoriainimg >= 2){
+    printf ("Adversario vence o combate!");
+    printf ("\n\n");
+    printf("                    111         \n");
+    printf("                   1   1     \n");
+    printf("                   1   1       \n");
+    printf("                 1   1   1       \n");
+    printf("                   1 1 1     \n");
+    printf("                     1     \n");
+    printf("                     1        \n");
+    printf("                   1   1   \n");
+    printf("                   1   1      \n ");
+    printf("-------------------------------------------\n");
+        
+    }
+    return 0;
+}
